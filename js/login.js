@@ -36,13 +36,13 @@ function login() {
     }
   });
 }
-if(!cokie){
-    console.log(body,cokie)
-  }else{
-    body.innerHTML="Kindly Login First"
+// if(!cokie){
+//     console.log(body,cokie)
+//   }else{
+//     body.innerHTML="Kindly Login First"
 
-    location.pathname ="/Login.html"
-  }
+//     location.pathname ="/Login.html"
+//   }
 
 function logout(){
   document.cookie = "userName = ;expires=Thu, 01 Jan 1970 00:00:00 UTC;"

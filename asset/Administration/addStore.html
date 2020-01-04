@@ -7,10 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>::Inventory Managmant System::</title>
   <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase.js"></script>
-  <script src="js/firebase.js"></script>
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/all.css">
-  <link rel="stylesheet" href="css/style.css">
+  <script src="../../js/firebase.js"></script>
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/all.css">
+  <link rel="stylesheet" href="../../css/style.css">
 
 </head>
 
@@ -42,12 +42,12 @@
             </a>
             <ul class="menu-siderbar-child nav flex-column">
               <li class="nav-item">
-                <a href="javascript:;" class="nav-link active">
+                <a href="../Administration/addStore.html" class="nav-link active">
                   <i class="menu-icon fa fa-bolt"></i> Add Store
                 </a>
               </li>
               <li class="nav-item">
-                <a href="javascript:;" class="nav-link">
+                <a href="../Administration/addSuplier.html" class="nav-link">
                   <i class="menu-icon fa fa-bolt"></i> Add Supplier
                 </a>
               </li>
@@ -96,32 +96,91 @@
       </div>
       <div class="col offset-2" id="main-content">
         <div class="container-fluid mt-5">
-          <h2 class="display-inline">Welcome Admin</h2>
-          <nav aria-label="Page breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page">Item 1</li>
-              <li class="breadcrumb-item">Item 2</li>
-            </ol>
-          </nav>
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-10">
+                  <h2>Store Managment</h2>
+                </div>
+                <div class="col-2"><button class="btn btn-success ml-auto ml-md-0" data-toggle="modal"
+                    data-target="#addStore" type="button">Add Store</button></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <table class="table table-light">
+                <tbody>
+                  <tr>
+                    <th>Head</th>
+                  </tr>
+                  <tr>
+                    <td>Data</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <!-- Add Store Modal-->
+  <div class="modal fade" id="addStore" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST" action="">
+            <div class="form-group">
+              <label for="SuplierName">Supplier Name</label>
+              <input id="SuplierName" class="form-control" type="text" placeholder="Enter Suplier Name" required>
+            </div>
+            <div class="form-group">
+              <label for="SuplierNumber">Supplier Number</label>
+              <input id="SuplierNumber" class="form-control" type="text" placeholder="Enter Suplier Number" required>
+            </div>
+            <div class="form-group">
+              <label for="SuplierEmail">Supplier Email</label>
+              <input id="SuplierEmail" class="form-control" type="text" placeholder="Enter Suplier Email" required>
+            </div>
+            <div class="form-group">
+              <label for="SuplierAddress">Supplier Address</label>
+              <input id="SuplierAddress" class="form-control" type="text" placeholder="Enter Suplier Address" required>
+            </div>
+            <div class="form-check">
+              <input id="isActive" class="form-check-input" type="checkbox" value="true">
+              <label for="isActive" class="form-check-label">Is Active</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Modal -->
   <!-- End of Dashboard -->
-  <script src="js/all.js"></script>
-  <script src="js/jquery-3.2.1.slim.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <script src="../../js/all.js"></script>
+  <script src="../../js/jquery-3.2.1.slim.min.js"></script>
+  <script src="../../js/popper.min.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
   <script>
     let slider = document.getElementById('slider')
     let mainContent = document.getElementById('main-content')
-    function toggle(){
-      if(slider.className === 'col-2 slider position-fixed'){
+    function toggle() {
+      if (slider.className === 'col-2 slider position-fixed') {
         slider.className = 'slider-display'
         mainContent.className = 'col'
         console.log(slider.className)
       }
-      else{
+      else {
         slider.className = 'col-2 slider position-fixed'
         mainContent.className = 'col offset-2'
         console.log(mainContent.className)
@@ -131,6 +190,6 @@
   </script>
 
 </body>
-<script src="js/login.js"></script>
+<script src="../../js/login.js"></script>
 
 </html>

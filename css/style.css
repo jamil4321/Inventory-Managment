@@ -2,6 +2,7 @@ body{
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    overflow-x: hidden;
 }
 /* For Login Page */
 .login-box{
@@ -75,9 +76,54 @@ h1{
 {
     color: #39dc79;
 }
-
-/* For Welcom Badge */
-.welcome{
-    margin-top: 5%;
-    width:70%;
+/* slider */
+.slider{
+    height: 100%;
+    background-color: #343a40!important;
+    transition: all 0.5s ease-in;
+    
+}
+#sliderToggler{
+    color: white;
+}
+.slider-display{
+    display:none;
+}
+.menu-siderbar {
+    width: 240px;
+    min-height: calc(100vh - 56px);
+}
+.menu-siderbar .nav-item {
+    position: relative;
+}
+.menu-siderbar .nav-item .nav-link-parent:after {
+    position: absolute;
+    font-size: 12px;
+    line-height: 10px;
+    right: 14px;
+    top: 17px;
+}
+.menu-siderbar .nav-item.open .nav-link-parent:after {
+    content: "\f106";
+}
+.menu-siderbar .nav-item .nav-link {
+    color: white;
+}
+.menu-siderbar .nav-item .nav-link:hover {
+    color:lightgray;
+}
+.menu-siderbar .nav-item .nav-link.active {
+    color: gray;
+}
+.menu-siderbar .nav-item .nav-link .menu-icon {
+    margin-right: 6px;
+}
+.menu-siderbar .nav-item .menu-siderbar-child {
+    display: none;
+}
+.menu-siderbar .nav-item .menu-siderbar-child .nav-link {
+    padding-left: calc(1rem + 15px);
+}
+.menu-siderbar .nav-item.open .menu-siderbar-child{
+    display: block;
 }
