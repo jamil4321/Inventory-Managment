@@ -1,6 +1,19 @@
 // View Data in Html
 const itemRef = db.ref("item/");
 let item = [];
+let selectSupplier = document.getElementById('selectSpplier')
+let supplire = [];
+db.ref("supplier/").once("value", data => {
+   supplire= Object.values(data.val());
+   console.log(supplire)
+  for (let i = 0; i < supplire.length; i++) {
+    var option = document.createElement("option");
+    option.value = supplire[i].supplierName;
+    option.text = supplire[i].supplierName;
+    selectSupplier.appendChild(option);
+}
+});
+console.log(selectSupplier)
 //Get realtime data
 itemRef.on("value", function(snapshot) {
   let itemTable = document.getElementById("item");
@@ -12,31 +25,31 @@ itemRef.on("value", function(snapshot) {
     item[j++].key = key;
   }
   itemTable.innerHTML += `
-    <tbody>
-                  <tr>
-                    <th>Sr No.</th>
-                    <th>item Name</th>
-                    <th>Status</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-    `;
+  <tbody>
+                <tr>
+                  <th>Sr No.</th>
+                  <th>item Name</th>
+                  <th>Status</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+  `;
   for (var i = 0; i < item.length; i++) {
     itemTable.innerHTML += `
-                    <tr>
-                        <td>${i + 1}</td>
-                        <td>${item[i].itemName}</td>
-                        <td>${item[i].isActive}</td>
-                        <td>
-                        <button onclick="getitem('${
-                          item[i].key
-                        }')" data-toggle="modal"
-                        data-target="#additem" class="btn btn-warning">Edit</button>
-                        </td>
-                        <td><button onclick="delteitem('${
-                          item[i].key
-                        }')" class="btn btn-danger">Delete</button></td>
-                    </tr>`;
+                  <tr>
+                      <td>${i + 1}</td>
+                      <td>${item[i].itemName}</td>
+                      <td>${item[i].isActive}</td>
+                      <td>
+                      <button onclick="getitem('${
+                        item[i].key
+                      }')" data-toggle="modal"
+                      data-target="#additem" class="btn btn-warning">Edit</button>
+                      </td>
+                      <td><button onclick="delteitem('${
+                        item[i].key
+                      }')" class="btn btn-danger">Delete</button></td>
+                  </tr>`;
   }
   itemTable.innerHTML += "</tbody>";
 });
