@@ -48,7 +48,7 @@ itemRef.on("value", function(snapshot) {
                       <button onclick="getitem('${
                         item[i].key
                       }')" data-toggle="modal"
-                      data-target="#additem" class="btn btn-warning">Edit</button>
+                      data-target="#addItem" class="btn btn-warning">Edit</button>
                       </td>
                       <td><button onclick="delteitem('${
                         item[i].key
@@ -64,7 +64,6 @@ function additem() {
   let costPrice = document.getElementById("costPrice");
   let salePrice = document.getElementById("salePrice");
   let uom = document.getElementById("uom");
-  let selectSpplier = document.getElementById("selectSpplier");
   let isActive = document.getElementById("isActive");
   let status;
   if (isActive.checked) {
@@ -81,8 +80,8 @@ function additem() {
     itemName: itemName.value.toLowerCase(),
     costPrice: costPrice.value,
     salePrice: salePrice.value,
-    uom: uom.value.toLowerCase(),
-    supplier: selectSpplier.value.toLowerCase(),
+    uom: uom.value,
+    supplier: selectSpplier.value,
     isActive: status
   });
 
@@ -96,25 +95,34 @@ function additem() {
 // get item
 function getitem(itemKey) {
   let itemName = document.getElementById("itemName");
+  let costPrice = document.getElementById("costPrice");
+  let salePrice = document.getElementById("salePrice");
+  let uom = document.getElementById("uom");
   let isActive = document.getElementById("isActive");
   let senditemData = document.getElementById("senditem");
-  let editData = db.ref("item/" + itemKey + "/").once("value", data => {
+  console.log(selectSupplier.value)
+  db.ref("item/" + itemKey + "/").once("value", data => {
     dbData = data.val();
     itemName.value = dbData.itemName;
-    if (dbData.isActive == "Enable") {
+    costPrice.value = dbData.costPrice;
+    salePrice.value = dbData.salePrice;
+    uom.value = dbData.uom;
+    console.log(selectSupplier.value)
+    selectSupplier.value = dbData.supplier;
+    console.log(selectSupplier.value)
+    if (dbData.isActive == "enable") {
       isActive.checked = true;
     } else {
       isActive.checked = false;
     }
   });
-  let key = itemKey;
   senditemData.onclick = function() {
-    updateitem(itemKey, itemName, isActive);
+    updateitem(itemKey, itemName,costPrice,salePrice,uom,selectSupplier, isActive);
   };
   senditemData.innerHTML = "Update Record";
 }
 // Update item
-function updateitem(itemKey, name, checked) {
+function updateitem(itemKey, name,cost,sale,uom,supplier, checked) {
   let senditemData = document.getElementById("senditem");
   let active;
   if (checked.checked) {
@@ -123,10 +131,18 @@ function updateitem(itemKey, name, checked) {
     active = "disable";
   }
   db.ref("item/" + itemKey).update({
-    itemName: name.value,
+    itemName: itemName.value.toLowerCase(),
+    costPrice: cost.value,
+    salePrice: sale.value,
+    uom: uom.value,
+    supplier: selectSpplier.value,
     isActive: active
   });
   name.value = "";
+  cost.value = '';
+  sale.value = '';
+  uom.value ='';
+  supplier.value='';
   checked.checked = false;
   senditemData.innerHTML = "Add Record";
 }
