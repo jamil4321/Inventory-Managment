@@ -42,12 +42,12 @@
             </a>
             <ul class="menu-siderbar-child nav flex-column">
               <li class="nav-item">
-                <a href="../Administration/addStore.html" class="nav-link active">
-                  <i class="menu-icon fa fa-bolt"></i> Add Store
-                </a>
+                <a href="../Administration/addStore.html" class="nav-link">
+                    <i class="menu-icon fa fa-bolt"></i> Add Store
+                  </a>
               </li>
               <li class="nav-item">
-                <a href="../Administration/addSuplier.html" class="nav-link">
+                <a href="../Administration/addSuplier.html" class="nav-link active">
                   <i class="menu-icon fa fa-bolt"></i> Add Supplier
                 </a>
               </li>
@@ -108,12 +108,11 @@
                   <h2>Store Managment</h2>
                 </div>
                 <div class="col-2"><button class="btn btn-success ml-auto ml-md-0" data-toggle="modal"
-                    data-target="#addStore" type="button">Add Store</button></div>
+                    data-target="#addSuplier" type="button">Add Suplier</button></div>
               </div>
             </div>
             <div class="card-body">
-              <table class="table table-hover" id="store">
-               
+              <table class="table table-hover" id="supplier">
               </table>
             </div>
           </div>
@@ -121,13 +120,13 @@
       </div>
     </div>
   </div>
-  <!-- Add Store Modal-->
-  <div class="modal fade" id="addStore" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  <!-- Add Suplier Modal-->
+  <div class="modal fade" id="addSuplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Store Detail</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -135,18 +134,26 @@
         <div class="modal-body">
           <form method="POST" action="">
             <div class="form-group">
-              <label for="storeName">Store Name</label>
-              <input id="storeName" class="form-control" type="text" maxlength="20" placeholder="Enter Store Name" required="required">
+              <label for="supplierName">Supplire Name</label>
+              <input id="supplierName" class="form-control" type="text" placeholder="Enter Supplier Name" required>
             </div>
+            <div class="form-group">
+                <label for="supplierNumber">Supplire Number</label>
+                <input id="supplierNumber" class="form-control" type="number" placeholder="Enter Supplier Number" required>
+              </div>
+              <div class="form-group">
+                <label for="supplierAddresss">Supplire Address</label>
+                <input id="supplierAddress" class="form-control" type="text" placeholder="Enter Supplier Address" required>
+              </div>
             <div class="form-check">
-              <input id="isActive" class="form-check-input" type="checkbox">
+              <input id="isActive" class="form-check-input" type="checkbox" value="true">
               <label for="isActive" class="form-check-label">Is Active</label>
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" onclick="addStore()" class="btn btn-primary" id="sendStore" data-dismiss="modal">Add Record</button>
+          <button type="button" class="btn btn-primary" onclick="addSupplier()" id="sendSupplier" data-dismiss="modal">Add Record</button>
         </div>
       </div>
     </div>
@@ -158,10 +165,9 @@
   <script src="../../js/popper.min.js"></script>
   <script src="../../js/bootstrap.min.js"></script>
   <script src="../../js/extraFeature.js"></script>
-  <script src="../../js/addStore.js"></script>
+  <script src="../../js/addSupplire.js"></script>
 
 </body>
 <script src="../../js/login.js"></script>
-
 
 </html>

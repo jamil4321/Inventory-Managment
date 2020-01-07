@@ -108,12 +108,19 @@
                   <h2>Store Managment</h2>
                 </div>
                 <div class="col-2"><button class="btn btn-success ml-auto ml-md-0" data-toggle="modal"
-                    data-target="#addStore" type="button">Add Store</button></div>
+                    data-target="#addItem" type="button">Add Item</button></div>
               </div>
             </div>
             <div class="card-body">
-              <table class="table table-hover" id="store">
-               
+              <table class="table table-light">
+                <tbody>
+                  <tr>
+                    <th>Head</th>
+                  </tr>
+                  <tr>
+                    <td>Data</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
@@ -121,32 +128,70 @@
       </div>
     </div>
   </div>
-  <!-- Add Store Modal-->
-  <div class="modal fade" id="addStore" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  <!-- Add Item Modal-->
+  <div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Store Detail</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <form method="POST" action="">
-            <div class="form-group">
-              <label for="storeName">Store Name</label>
-              <input id="storeName" class="form-control" type="text" maxlength="20" placeholder="Enter Store Name" required="required">
+              <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="itemName">Item Name</label>
+                        <input id="itemName" class="form-control" type="text" placeholder="Enter Item Name" required>
+                      </div>
+                </div>
+               
+              </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="costPrice">Cost Price</label>
+                        <input id="costPrice" class="form-control" type="number" placeholder="Enter Cost Price" required>
+                      </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="salePrice">Sale Price</label>
+                        <input id="salePrice" class="form-control" type="number" placeholder="Enter SalePrice" required>
+                      </div>
+                </div>
             </div>
-            <div class="form-check">
-              <input id="isActive" class="form-check-input" type="checkbox">
-              <label for="isActive" class="form-check-label">Is Active</label>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="uom">U.O.M</label>
+                        <select id="uom" class="form-control">
+                            <option>Text</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="selectSpplier">Select Supplier</label>
+                        <select id="selectSpplier" class="form-control">
+                            <option>Text</option>
+                        </select>
+                    </div>
+                </div>
+                
             </div>
+                <div class="form-check">
+                    <input id="is_active" class="form-check-input" type="checkbox" value="true">
+                    <label for="is_active" class="form-check-label">Is Active</label>
+                  </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" onclick="addStore()" class="btn btn-primary" id="sendStore" data-dismiss="modal">Add Record</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
@@ -158,10 +203,9 @@
   <script src="../../js/popper.min.js"></script>
   <script src="../../js/bootstrap.min.js"></script>
   <script src="../../js/extraFeature.js"></script>
-  <script src="../../js/addStore.js"></script>
+  <script src="../../js/addItem.js"></script>
 
 </body>
 <script src="../../js/login.js"></script>
-
 
 </html>
