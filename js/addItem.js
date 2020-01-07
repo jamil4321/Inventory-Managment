@@ -5,7 +5,6 @@ let selectSupplier = document.getElementById('selectSpplier')
 let supplire = [];
 db.ref("supplier/").once("value", data => {
    supplire= Object.values(data.val());
-   console.log(supplire)
   for (let i = 0; i < supplire.length; i++) {
     var option = document.createElement("option");
     option.value = supplire[i].supplierName;
@@ -13,7 +12,6 @@ db.ref("supplier/").once("value", data => {
     selectSupplier.appendChild(option);
 }
 });
-console.log(selectSupplier)
 //Get realtime data
 itemRef.on("value", function(snapshot) {
   let itemTable = document.getElementById("item");
@@ -29,6 +27,9 @@ itemRef.on("value", function(snapshot) {
                 <tr>
                   <th>Sr No.</th>
                   <th>item Name</th>
+                  <th>cost price</th>
+                  <th>sale price</th>
+                  <th>supplier Name</th>
                   <th>Status</th>
                   <th></th>
                   <th></th>
@@ -39,6 +40,9 @@ itemRef.on("value", function(snapshot) {
                   <tr>
                       <td>${i + 1}</td>
                       <td>${item[i].itemName}</td>
+                      <td>${item[i].costPrice}</td>
+                      <td>${item[i].salePrice}</td>
+                      <td>${item[i].supplier}</td>
                       <td>${item[i].isActive}</td>
                       <td>
                       <button onclick="getitem('${
@@ -57,12 +61,16 @@ itemRef.on("value", function(snapshot) {
 // Add item Function
 function additem() {
   let itemName = document.getElementById("itemName");
+  let costPrice = document.getElementById("costPrice");
+  let salePrice = document.getElementById("salePrice");
+  let uom = document.getElementById("uom");
+  let selectSpplier = document.getElementById("selectSpplier");
   let isActive = document.getElementById("isActive");
   let status;
   if (isActive.checked) {
-    status = "Enable";
+    status = "enable";
   } else {
-    status = "Disable";
+    status = "disable";
   }
   let itemId = db
     .ref()
@@ -71,10 +79,18 @@ function additem() {
 
   db.ref("item/" + itemId).set({
     itemName: itemName.value.toLowerCase(),
+    costPrice: costPrice.value,
+    salePrice: salePrice.value,
+    uom: uom.value.toLowerCase(),
+    supplier: selectSpplier.value.toLowerCase(),
     isActive: status
   });
 
   itemName.value = "";
+  costPrice.value = "";
+  salePrice.value = "";
+  uom.value = "";
+  selectSupplier.value = "";
   isActive.checked = false;
 }
 // get item
