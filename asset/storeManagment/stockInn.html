@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>::Inventory Managmant System::</title>
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase.js"></script>
+  <script src="../../js/firebase.js"></script>
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/all.css">
+  <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+
+<body id="body">
+  <!-- Start of Nav Bar -->
+
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark navbar nav-fi bg-dark navbar-light" id="navbar">
+    <a id="sliderToggler" onclick="toggle()">
+      <i class="fas fa-bars"></i>
+    </a>
+    <div class="container">
+      <a class="navbar-brand" href="../../index.html">Inventory Managment </a>
+      <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item">
+          <button type="button" class="btn btn-default btn-sm">Log out</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- End of Nav Bar  -->
+  <!-- Start of Dashboard -->
+  <div class="wrapper ml-1 mt-5">
+    <div class="row">
+      <div class="col-2 slider bg-dark position-fixed" id="slider">
+        <ul class="menu-siderbar nav flex-column mt-5">
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link nav-link-parent">
+              <i class="menu-icon fa fa-th"></i> Administrator
+            </a>
+            <ul class="menu-siderbar-child nav flex-column">
+              <li class="nav-item">
+                <a href="../Administration/addStore.html" class="nav-link active">
+                  <i class="menu-icon fa fa-bolt"></i> Add Store
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../Administration/addSuplier.html" class="nav-link">
+                  <i class="menu-icon fa fa-bolt"></i> Add Supplier
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../Administration/addItem.html" class="nav-link">
+                  <i class="menu-icon fa fa-bolt"></i> Add Item
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link nav-link-parent">
+              <i class="menu-icon fa fa-th"></i> Store Managment
+            </a>
+            <ul class="menu-siderbar-child nav flex-column">
+              <li class="nav-item">
+                <a href="../storeManagment/purchaseOrder.html" class="nav-link">
+                  <i class="menu-icon fa fa-bolt"></i> Purchase Order
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="stockInn.html" class="nav-link">
+                  <i class="menu-icon fa fa-bolt"></i> Stock Inn
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="stockInn.html" class="nav-link">
+                  <i class="menu-icon fa fa-bolt"></i> Stock Out
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link nav-link-parent">
+              <i class="menu-icon fa fa-th"></i> User Managment
+            </a>
+            <ul class="menu-siderbar-child nav flex-column">
+              <li class="nav-item">
+                <a href="../userManagment/addUser.html" class="nav-link">
+                  <i class="menu-icon fa fa-bolt"></i> Add User
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../userManagment/roleManagment.html" class="nav-link">
+                  <i class="menu-icon fa fa-bolt"></i> Role Managment
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="col offset-2" id="main-content">
+        <div class="container-fluid mt-5">
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-10">
+                  <h2>Store Managment</h2>
+                </div>
+                <div class="col-2"><button class="btn btn-success ml-auto ml-md-0" data-toggle="modal"
+                    data-target="#addItem" type="button">Add Item</button></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <table class="table table-hover" id="item">             
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Add Item Modal-->
+  <div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST" action="">
+              <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="itemName">Item Name</label>
+                        <input id="itemName" class="form-control" type="text" placeholder="Enter Item Name" required>
+                      </div>
+                </div>
+               
+              </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="costPrice">Cost Price</label>
+                        <input id="costPrice" class="form-control" type="number" placeholder="Enter Cost Price" required>
+                      </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="salePrice">Sale Price</label>
+                        <input id="salePrice" class="form-control" type="number" placeholder="Enter SalePrice" required>
+                      </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="uom">U.O.M</label>
+                        <select id="uom" class="form-control">
+                            <option value="">--Select U.O.M--</option>
+                            <option value="kg">KG</option>
+                            <option value="grams">Grams</option>
+                            <option value="pcs">Pcs</option>
+                            <option value="bottle">Bottle</option>
+                            <option value="carton">Carton</option>
+                            <option value="dozen">Dozen</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="selectSpplier">Select Supplier</label>
+                        <select id="selectSpplier" class="form-control">
+                            <option>--Select Supplier--</option>
+                        </select>
+                    </div>
+                </div>
+                
+            </div>
+                <div class="form-check">
+                    <input id="isActive" class="form-check-input" type="checkbox" value="true">
+                    <label for="isActive" class="form-check-label">Is Active</label>
+                  </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="additem()" id="senditem" >Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Modal -->
+  <!-- End of Dashboard -->
+  <script src="../../js/all.js"></script>
+  <script src="../../js/jquery-3.2.1.slim.min.js"></script>
+  <script src="../../js/popper.min.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
+  <script src="../../js/extraFeature.js"></script>
+  <script src="../../js/addItem.js"></script>
+
+</body>
+<script src="../../js/login.js"></script>
+
+</html>
