@@ -108,8 +108,8 @@
                   <h2>Store Managment</h2>
                 </div>
                 <div class="col-2">
-                  <a class="btn btn-success ml-auto ml-md-0" href="addPO.html" data-toggle="modal"
-                  data-target="#addItem" type="button" onclick="addPO()" id="addPO">Select Supplier</a>
+                  <button class="btn btn-success" data-toggle="modal"
+                  data-target="#addSuplier" type="button" onclick="addPO()" id="addPO">Select Supplier</button>
                 </div>
               </div>
             </div>
@@ -159,8 +159,8 @@
     </div>
 </div>
 
- <!-- Add Store Modal-->
- <div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+ <!-- Add supplire Modal-->
+ <div class="modal fade" id="addSuplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
  aria-hidden="true">
  <div class="modal-dialog modal-dialog-centered" role="document">
    <div class="modal-content">
@@ -175,6 +175,35 @@
          <div class="form-group">
            <label for="sel-suppleir">Text</label>
            <select id="sel-suppleir" class="form-control">
+            <option>--Select item--</option>
+           </select>
+         </div>
+       </form>
+     </div>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       <button type="button" onclick="startPO()" class="btn btn-primary" id="sendStore" data-dismiss="modal">Add Record</button>
+     </div>
+   </div>
+ </div>
+</div>
+<!-- End Modal -->
+ <!-- Add Item Modal-->
+ <div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+ aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5 class="modal-title" id="exampleModalLongTitle">Add Name</h5>
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+       <form method="POST" action="">
+         <div class="form-group">
+           <label for="sel-item">Text</label>
+           <select id="sel-item" class="form-control">
             <option>--Select Supplier--</option>
            </select>
          </div>
