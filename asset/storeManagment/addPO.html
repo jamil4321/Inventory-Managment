@@ -34,7 +34,7 @@
   <!-- Start of Dashboard -->
   <div class="wrapper ml-1 mt-5">
     <div class="row">
-      <div class="col-2 slider bg-dark position-fixed" id="slider">
+      <div class="col-sm-12 col-md-3 col-lg-2 slider bg-dark position-fixed" id="slider">
         <ul class="menu-siderbar nav flex-column mt-5">
           <li class="nav-item">
             <a href="javascript:;" class="nav-link nav-link-parent">
@@ -107,19 +107,87 @@
                 <div class="col-10">
                   <h2>Store Managment</h2>
                 </div>
+                <div class="col-2">
+                  <a class="btn btn-success ml-auto ml-md-0" href="addPO.html" data-toggle="modal"
+                  data-target="#addItem" type="button" onclick="addPO()" id="addPO">Select Supplier</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form method="post" action="">
+                  <div class="row">
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="supplierName">Supplier Name</label>
+                        <input id="supplierName" class="form-control"  type="text">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="supplierNumber">Number</label>
+                        <input id="supplierNumber" class="form-control"  type="number">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="supplierAddress">Address</label>
+                        <input id="supplierAddress" class="form-control"  type="text">
+                      </div>
+                    </div>
+                  </div>
+                  
+              </form>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-10">
+                  
+                </div>
                 <div class="col-2"><button class="btn btn-success ml-auto ml-md-0" data-toggle="modal"
                     data-target="#addItem" type="button">Add Item</button></div>
               </div>
             </div>
-            <div class="card-body">
-              <table class="table table-hover" id="item">             
-              </table>
+            <div class="card-body" id="addedItem">
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 </div>
+
+ <!-- Add Store Modal-->
+ <div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+ aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5 class="modal-title" id="exampleModalLongTitle">Add Name</h5>
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+       <form method="POST" action="">
+         <div class="form-group">
+           <label for="sel-suppleir">Text</label>
+           <select id="sel-suppleir" class="form-control">
+            <option>--Select Supplier--</option>
+           </select>
+         </div>
+       </form>
+     </div>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       <button type="button" onclick="startPO()" class="btn btn-primary" id="sendStore" data-dismiss="modal">Add Record</button>
+     </div>
+   </div>
+ </div>
+</div>
+<!-- End Modal -->
   <!-- End of Dashboard -->
   <script src="../../js/all.js"></script>
   <script src="../../js/jquery-3.2.1.slim.min.js"></script>
