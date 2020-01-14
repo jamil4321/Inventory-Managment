@@ -4,16 +4,9 @@ let supNumber = document.getElementById("supplierNumber");
 let supAdd = document.getElementById("supplierAddress");
 let supplier = [];
 let addPOBTN = document.getElementById("addPO");
-db.ref("supplier/").once("value", data => {
+db.ref("supplier/").on("value", data => {
   supplier = Object.values(data.val());
 });
-while(true){
-  if(supplier.length === 0){
-    addPOBTN.classList += ' disabled'
-  }else{
-    addPOBTN.classList = 'btn btn-success'
-  }
-}
 
 
 function addPO() {
